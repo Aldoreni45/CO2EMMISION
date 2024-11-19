@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction</title>
+</head>
+<body style="background-color: black; text-align: center;">
+    <h1 style="color: violet; text-align: center;">CO2 EMISSION PREDICTION</h1>
+
+<div class="center">
+    <form action="/predict" method="post" class="formstyle">
+        <input type="text" placeholder="Enter The Engine Size" name="Engine_size" style="width: 350px; text-align: center; margin: 45px; ">
+<br/>
+    <button type="submit" style="background-color: white; margin: 12px; width: 350px;"> Generate Prediction</button>
+    </div>
+
+    <br>
+    <br>
+ <!--   <h4 style="color:violet">{{prediction_text}}</h4>     -->
+  
+    </form>
+</body>
+<style>
+    .center{
+        display: flex;
+  justify-content: center; /* Horizontally centers the form */
+  align-items: center;     /* Vertically centers the form */
+  height: 100%;
+    }
+.formstyle{
+    border: 1px solid white;
+    width: 500px;
+    height:500px;
+    box-shadow: 0 4px 8px rgba(255,255,255,0.2);
+    border-radius: 10px;
+    background-color: #333;
+    
+}
+
+</style>
+</html>
