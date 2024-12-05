@@ -3,40 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prediction</title>
+    <title>CO2 Emission Prediction</title>
+    <style>
+        /* Overall page styling */
+        body {
+            background-color: rgb(17, 15, 15);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: violet;
+            margin-top: 20px;
+            font-size: 2.5rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            flex-direction: column;
+        }
+
+        .formstyle {
+            border: 1px solid violet;
+            width: 500px;
+            padding: 20px;
+            box-shadow: 0 10px 20px rgba(128, 0, 128, 0.5);
+            border-radius: 10px;
+            background-color: #333;
+            animation: slideIn 1s ease-in-out;
+            position: relative;
+        }
+
+        .formstyle input, .formstyle button {
+            width: 90%;
+            margin: 15px auto;
+            padding: 10px;
+            font-size: 1.1rem;
+            border: 1px solid white;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .formstyle input {
+            text-align: center;
+            background-color: #222;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .formstyle input:hover {
+            background-color: #444;
+        }
+
+        .formstyle button {
+            background-color: violet;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .formstyle button:hover {
+            transform: scale(1.1);
+            background-color: #9400D3;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #222;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            color: violet;
+            display: none; /* Hidden by default */
+        }
+
+        #result.visible {
+            display: block;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: black; text-align: center;">
-    <h1 style="color: violet; text-align: center;">CO2 EMISSION PREDICTION</h1>
+<body>
+    <h1>CO2 EMISSION PREDICTION</h1>
 
-<div class="center">
-    <form action="/predict" method="post" class="formstyle">
-        <input type="text" placeholder="Enter The Engine Size" name="Engine_size" style="width: 350px; text-align: center; margin: 45px; ">
-<br/>
-    <button type="submit" style="background-color: white; margin: 12px; width: 350px;"> Generate Prediction</button>
+    <div class="center">
+        <!-- Form inside the styled box -->
+        <form action="/predict" method="post" class="formstyle">
+            <input type="text" placeholder="Enter The Engine Size" name="Engine_size" required>
+            <button type="submit">Generate Prediction</button>
+            <!-- Dynamic result display -->
+            <div id="result" class="{% if prediction_text %}visible{% endif %}">
+                {% if prediction_text %}
+                    {{ prediction_text }}
+                {% endif %}
+            </div>
+        </form>
     </div>
-
-    <br>
-    <br>
- <!--   <h4 style="color:violet">{{prediction_text}}</h4>     -->
-  
-    </form>
 </body>
-<style>
-    .center{
-        display: flex;
-  justify-content: center; /* Horizontally centers the form */
-  align-items: center;     /* Vertically centers the form */
-  height: 100%;
-    }
-.formstyle{
-    border: 1px solid white;
-    width: 500px;
-    height:500px;
-    box-shadow: 0 4px 8px rgba(255,255,255,0.2);
-    border-radius: 10px;
-    background-color: #333;
-    
-}
-
-</style>
 </html>
